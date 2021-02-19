@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1072647088345",
+    "project_id": "the-happier-app",
+    "storage_bucket": "the-happier-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072647088345:android:36e49294a43865dd7bb6c8",
+        "android_client_info": {
+          "package_name": "com.gretchenrubinexperience.thehappierapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1072647088345-vnb9onv6uerfkfgh65rlv831jr2ofknk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3C1z0grS6pwl2kOnWjEPH2pqrDxzKMLc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1072647088345-vnb9onv6uerfkfgh65rlv831jr2ofknk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
