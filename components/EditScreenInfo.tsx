@@ -1,7 +1,6 @@
 import Constants from "expo-constants";
 import * as Notifications from "expo-notifications";
 
-import * as WebBrowser from "expo-web-browser";
 import React, { useState, useEffect, useRef } from "react";
 import { StyleSheet, Button, Platform } from "react-native";
 
@@ -48,17 +47,17 @@ export default function EditScreenInfo({ path }: { path: string }) {
         justifyContent: "space-around",
       }}
     >
-      <Text>your expo push token: {expoPushToken}</Text>
-      <View style={{ alignItems: "center", justifyContent: "center" }}>
-        <Text>
-          Title: {notification && notification.request.content.title}{" "}
-        </Text>
-        <Text>Body: {notification && notification.request.content.body}</Text>
-        <Text>
-          Data:{" "}
-          {notification && JSON.stringify(notification.request.content.data)}
-        </Text>
-      </View>
+      <Text>[DEBUG] {expoPushToken}</Text>
+      {notification && (
+        <View style={{ alignItems: "center", justifyContent: "center" }}>
+          <Text>Push Notification Received:</Text>
+          <Text>Title: {notification.request.content.title} </Text>
+          <Text>Body: {notification.request.content.body}</Text>
+          <Text>
+            Metadata: {JSON.stringify(notification.request.content.data)}
+          </Text>
+        </View>
+      )}
       <Button
         title="Press to Send Notification"
         onPress={async () => {
@@ -66,12 +65,6 @@ export default function EditScreenInfo({ path }: { path: string }) {
         }}
       />
     </View>
-  );
-}
-
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    "https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet"
   );
 }
 
@@ -137,9 +130,9 @@ const styles = StyleSheet.create({
 async function sendPushNotification(expoPushToken) {
   const message = {
     to: expoPushToken,
-    sound: "default",
-    title: "Original Title",
-    body: "And here is the body!",
+    sound: "default", // ?
+    title: "Notification Sent",
+    body: "Notification Details",
     data: { someData: "goes here" },
   };
 
