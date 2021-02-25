@@ -1,6 +1,7 @@
 import * as React from "react";
-import { StyleSheet } from "react-native";
+import { Button, StyleSheet } from "react-native";
 
+import InstructionComponent from "../components/OnboardingQuiz/InstructionComponent";
 import { Text, View } from "../components/Themed";
 
 export default function HomeScreen() {
@@ -12,6 +13,8 @@ export default function HomeScreen() {
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
+      <Button title="Begin Onboarding Quiz" onPress={null} />
+      <InstructionComponent />
     </View>
   );
 }
