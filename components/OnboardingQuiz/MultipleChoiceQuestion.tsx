@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { TouchableWithoutFeedback } from "react-native";
-import { RadioButtons } from "react-native-radio-buttons";
+// import { TouchableWithoutFeedback } from "react-native";
+import { Text, View } from "react-native";
 
-import { Text, View } from "../Themed";
+import styles from "../../constants/BaseStyle";
 
 export default function MultipleChoiceQuestion({
   question,
@@ -11,27 +11,24 @@ export default function MultipleChoiceQuestion({
 }) {
   const [selectedOption, setSelectedOption] = useState("");
   return (
-    <View
-      style={{
-        flex: 1,
-        // alignItems: "center",
-        justifyContent: "space-around",
-        padding: 8,
-      }}
-    >
-      <Text style={{ fontWeight: "bold" }}>{questionBank[question - 1]}</Text>
+    <View style={styles.container}>
+      <Text style={[styles.header, { fontSize: 12 }]}>{question} of 7</Text>
+      <Text style={styles.header}>{questionBank[question - 1]}</Text>
 
-      <RadioButtons
-        options={answerBank[question - 1]}
-        onSelection={(option) => setSelectedOption(option)}
-        selectedOption={selectedOption}
-        renderOption={renderOption}
-        renderContainer={renderContainer}
-      />
+      {answerBank[question - 1].map((answer, i) => {
+        return (
+          <View key={i} style={styles.contentContainer}>
+            <Text key={i} style={styles.paragraph}>
+              {answer}
+            </Text>
+          </View>
+        );
+      })}
     </View>
   );
 }
 
+/*
 function renderOption(option, selected, onSelect, index) {
   const style = selected ? { fontWeight: "bold", padding: 8 } : { padding: 8 };
 
@@ -45,6 +42,7 @@ function renderOption(option, selected, onSelect, index) {
 function renderContainer(optionNodes) {
   return <View>{optionNodes}</View>;
 }
+*/
 
 const questionBank = [
   "Have you kept a New Year’s resolution where you weren’t accountable to anyone—a resolution like drinking more water or keeping a journal?",

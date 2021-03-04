@@ -1,18 +1,21 @@
 import React from "react";
+import { Text, View } from "react-native";
 
-import { Text, View } from "../Themed";
+import styles from "../../constants/BaseStyle";
 
 export default function InstructionComponent() {
   return (
     <View
-      style={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "space-around",
-        padding: 8,
-      }}
+      style={[
+        styles.container,
+        {
+          paddingHorizontal: 24,
+          paddingVertical: 36,
+        },
+      ]}
     >
-      <Text>
+      <Text style={styles.header}>Onboarding Quiz</Text>
+      <Text style={styles.paragraph}>
         Consider the following scenarios. Obviously, you might not find yourself
         in these situations, and you might not react exactly as suggested;
         choose the answer that sounds like the kind of thing you'd most likely

@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     backgroundColor: Colors.secondaryBackground,
     borderRadius: 8,
-    padding: 8,
+    margin: 8,
   },
   paragraph: {
     color: Colors.primaryText,
