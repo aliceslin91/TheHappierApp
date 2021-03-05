@@ -18,6 +18,7 @@ export default {
           },
         },
       },
+      Onboarding: "onboarding",
       NotFound: "*",
     },
   },

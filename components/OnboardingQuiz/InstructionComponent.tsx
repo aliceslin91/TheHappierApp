@@ -14,7 +14,7 @@ export default function InstructionComponent() {
         },
       ]}
     >
-      <Text style={styles.header}>Onboarding Quiz</Text>
+      <Text style={styles.header}>Welcome to the Happier App!</Text>
       <Text style={styles.paragraph}>
         Consider the following scenarios. Obviously, you might not find yourself
         in these situations, and you might not react exactly as suggested;
