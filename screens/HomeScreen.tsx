@@ -26,7 +26,7 @@ export default function HomeScreen() {
           <Dots
             length={7}
             active={quizStep - 1}
-            passiveColor="#AADDEF"
+            passiveColor="#AADDEF" // TODO: hardcoded
             activeColor="#005781"
           />
         )}
@@ -57,6 +57,6 @@ function renderStep(quizStep: number) {
     case 7:
       return <ScaledQuestion question={quizStep} />;
     default:
-      return <Text>[TODO!] You are a ...</Text>;
+      return <Text style={{ flex: 1 }}>[TODO!] Results go here ...</Text>;
   }
 }
