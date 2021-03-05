@@ -8,6 +8,8 @@ import GRButton from "../components/GRButton";
 import InstructionComponent from "../components/OnboardingQuiz/InstructionComponent";
 import MultipleChoiceQuestion from "../components/OnboardingQuiz/MultipleChoiceQuestion";
 import ScaledQuestion from "../components/OnboardingQuiz/ScaledQuestion";
+import Results from "../components/OnboardingQuiz/Results";
+import Navigation from "../navigation";
 
 export default function OnboardingScreen({ navigation }) {
   const numberOfQuestions = 8;
@@ -21,13 +23,31 @@ export default function OnboardingScreen({ navigation }) {
     setQuizStep(quizStep - 1);
   };
 
+  const renderQuizContent = function () {
+    switch (quizStep) {
+      case 0:
+        return <InstructionComponent onProceed={increaseQuizStep} />;
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+      case 6:
+        return <MultipleChoiceQuestion question={quizStep} />;
+      case 7:
+        return <ScaledQuestion question={quizStep} />;
+      case 8:
+        return <Results onProceed={() => navigation.navigate("Root")} />;
+      default:
+        return (
+          <Text style={{ flex: 1 }}>Default here - should be unreachable</Text>
+        );
+    }
+  };
+
   return (
     <View style={[styles.container, { padding: 16 }]}>
-      <ScrollView>{renderQuizContent(quizStep)}</ScrollView>
-
-      {quizStep == 0 && (
-        <GRButton title="Begin Onboarding Quiz" onPress={increaseQuizStep} />
-      )}
+      <ScrollView>{renderQuizContent()}</ScrollView>
 
       {quizStep > 0 && quizStep < numberOfQuestions && (
         <View
@@ -63,32 +83,6 @@ export default function OnboardingScreen({ navigation }) {
           </View>
         </View>
       )}
-
-      {quizStep == numberOfQuestions && (
-        <GRButton
-          title="Proceed to the Happier App"
-          onPress={() => navigation.navigate("Root")}
-        />
-      )}
     </View>
   );
-}
-
-function renderQuizContent(quizStep: number) {
-  switch (quizStep) {
-    case 0:
-      return <InstructionComponent />;
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-      return <MultipleChoiceQuestion question={quizStep} />;
-    case 7:
-      return <ScaledQuestion question={quizStep} />;
-    default:
-      return <Text style={{ flex: 1 }}>[TODO!] Results go here ...</Text>;
-    // TODO: a different default
-  }
 }

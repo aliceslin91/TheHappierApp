@@ -3,7 +3,13 @@ import { Text, View } from "react-native";
 
 import styles from "../../constants/BaseStyle";
 
-export default function InstructionComponent() {
+import GRButton from "../../components/GRButton";
+
+export default function InstructionComponent({
+  onProceed,
+}: {
+  onProceed: any;
+}) {
   return (
     <View
       style={[
@@ -23,6 +29,8 @@ export default function InstructionComponent() {
         you; try not to search for exceptions to the rule or focus on one
         specific area of your life.
       </Text>
+      <View style={{ height: 48 }} />
+      <GRButton title="Begin Onboarding Quiz" onPress={onProceed} />
     </View>
   );
 }
