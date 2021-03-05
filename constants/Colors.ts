@@ -24,6 +24,8 @@ export default {
   secondaryBackground: lightBlue,
   headerText: deepBlue,
   buttonBackground: yellow,
+  buttonForeground: deepBlue,
+  buttonText: deepBlue,
 
   light: {
     text: gray,

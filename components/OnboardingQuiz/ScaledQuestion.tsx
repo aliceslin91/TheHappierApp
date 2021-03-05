@@ -11,8 +11,14 @@ export default function ScaledQuestion({ question }: { question: number }) {
       {questionBank.map((q, i) => {
         return (
           <View key={i}>
-            <Text style={styles.header}>{q}</Text>
-            <View style={{ flexDirection: "row", justifyContent: "center" }}>
+            <Text style={[styles.header, { lineHeight: 24 }]}>{q}</Text>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                paddingBottom: 16,
+              }}
+            >
               <View style={styles.contentContainer}>
                 <Text style={styles.paragraph}>Tend to Disagree</Text>
               </View>
