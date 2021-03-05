@@ -12,7 +12,7 @@ export default function OnboardingScreen({ navigation }) {
   const [quizStep, setQuizStep] = useState(0);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { padding: 16 }]}>
       <ScrollView>{renderStep(quizStep)}</ScrollView>
       <View
         style={{
