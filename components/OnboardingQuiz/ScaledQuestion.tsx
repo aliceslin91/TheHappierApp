@@ -3,7 +3,6 @@ import { Text, View } from "react-native";
 
 import styles from "../../constants/BaseStyle";
 
-// TODO: make scrollable
 export default function ScaledQuestion({ question }: { question: number }) {
   const [selectedOption, setSelectedOption] = useState("");
   return (

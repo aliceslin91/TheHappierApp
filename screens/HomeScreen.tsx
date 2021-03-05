@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Text, View } from "react-native";
+import { Button, ScrollView, Text, View } from "react-native";
 import Dots from "react-native-dots-pagination";
 
 import styles from "../constants/BaseStyle";
@@ -13,7 +13,7 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      {renderStep(quizStep)}
+      <ScrollView>{renderStep(quizStep)}</ScrollView>
       <View
         style={{
           flexDirection: "row",
