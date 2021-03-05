@@ -1,31 +1,43 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, Text, View } from "react-native";
+import Dots from "react-native-dots-pagination";
+
 import styles from "../constants/BaseStyle";
 
 import InstructionComponent from "../components/OnboardingQuiz/InstructionComponent";
 import MultipleChoiceQuestion from "../components/OnboardingQuiz/MultipleChoiceQuestion";
-// import { Text, View } from "../components/Themed";
 
 export default function HomeScreen() {
   const [quizStep, setQuizStep] = useState(0);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>The Happier App</Text>
-      <View style={styles.separator} />
       {renderStep(quizStep)}
-      {quizStep > 0 && (
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "flex-start",
+          padding: 8,
+        }}
+      >
+        {quizStep > 0 && (
+          <Dots
+            length={7}
+            active={quizStep - 1}
+            passiveColor="#AADDEF"
+            activeColor="#005781"
+          />
+        )}
+        {quizStep > 1 && (
+          /* TODO: use react-native-icons / react-native-vector-icons for button icon rendering */
+          <Button title="Previous" onPress={() => setQuizStep(quizStep - 1)} />
+        )}
         <Button
-          title="Previous Question"
-          onPress={() => setQuizStep(quizStep - 1)}
+          title={quizStep == 0 ? "Begin Onboarding Quiz" : "Next"}
+          onPress={() => setQuizStep(quizStep + 1)}
         />
-      )}
-      {/* need a gap/styling */}
-      {/* next button - render when not on the last step*/}
-      <Button
-        title={quizStep == 0 ? "Begin Onboarding Quiz" : "Next Question"}
-        onPress={() => setQuizStep(quizStep + 1)}
-      />
+      </View>
     </View>
   );
 }
