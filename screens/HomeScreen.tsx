@@ -6,6 +6,7 @@ import styles from "../constants/BaseStyle";
 
 import InstructionComponent from "../components/OnboardingQuiz/InstructionComponent";
 import MultipleChoiceQuestion from "../components/OnboardingQuiz/MultipleChoiceQuestion";
+import ScaledQuestion from "../components/OnboardingQuiz/ScaledQuestion";
 
 export default function HomeScreen() {
   const [quizStep, setQuizStep] = useState(0);
@@ -54,7 +55,7 @@ function renderStep(quizStep: number) {
     case 6:
       return <MultipleChoiceQuestion question={quizStep} />;
     case 7:
-      return <Text>[TODO!] Disagree/Neutral/Agree</Text>;
+      return <ScaledQuestion question={quizStep} />;
     default:
       return <Text>[TODO!] You are a ...</Text>;
   }
