@@ -14,9 +14,12 @@ import Navigation from "../navigation";
 export default function OnboardingScreen({ navigation }) {
   const numberOfQuestions = 8;
   const [quizStep, setQuizStep] = useState(0);
+  const [quizChoice, setQuizChoice] = useState(-1);
 
   const increaseQuizStep = function () {
     setQuizStep(quizStep + 1);
+    // TODO: save the question + choice
+    setQuizChoice(-1);
   };
 
   const decreaseQuizStep = function () {
@@ -33,7 +36,13 @@ export default function OnboardingScreen({ navigation }) {
       case 4:
       case 5:
       case 6:
-        return <MultipleChoiceQuestion question={quizStep} />;
+        return (
+          <MultipleChoiceQuestion
+            onPress={setQuizChoice}
+            question={quizStep}
+            selectedChoice={quizChoice}
+          />
+        );
       case 7:
         return <ScaledQuestion question={quizStep} />;
       case 8:
@@ -49,6 +58,7 @@ export default function OnboardingScreen({ navigation }) {
     <View style={[styles.container, { padding: 16 }]}>
       <ScrollView>{renderQuizContent()}</ScrollView>
 
+      {/* question nav */}
       {quizStep > 0 && quizStep < numberOfQuestions && (
         <View
           style={{
@@ -75,6 +85,7 @@ export default function OnboardingScreen({ navigation }) {
             <View style={{ padding: 16 }} />
             {quizStep > 0 && (
               <GRButton
+                disabled={quizChoice === -1}
                 isIconButton={true}
                 isPointingRight={true}
                 onPress={increaseQuizStep}

@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-// import { TouchableWithoutFeedback } from "react-native";
-import { Text, View } from "react-native";
+import React from "react";
+import { Text, TouchableOpacity, View, Touchable } from "react-native";
 
 import styles from "../../constants/BaseStyle";
 
 export default function MultipleChoiceQuestion({
   question,
+  selectedChoice,
+  onPress,
 }: {
   question: number;
+  selectedChoice: number;
+  onPress: any; // TODO: typing
 }) {
-  const [selectedOption, setSelectedOption] = useState("");
   return (
     <View style={styles.container}>
       <Text style={[styles.header, { fontSize: 12 }]}>{question} of 7</Text>
@@ -17,32 +19,24 @@ export default function MultipleChoiceQuestion({
 
       {answerBank[question - 1].map((answer, i) => {
         return (
-          <View key={i} style={styles.contentContainer}>
-            <Text key={i} style={styles.paragraph}>
-              {answer}
-            </Text>
-          </View>
+          <TouchableOpacity onPress={() => onPress(i)}>
+            <View key={i} style={styles.contentContainer}>
+              <Text
+                key={i}
+                style={[
+                  styles.paragraph,
+                  selectedChoice === i ? { fontWeight: "bold" } : {},
+                ]}
+              >
+                {answer}
+              </Text>
+            </View>
+          </TouchableOpacity>
         );
       })}
     </View>
   );
 }
-
-/*
-function renderOption(option, selected, onSelect, index) {
-  const style = selected ? { fontWeight: "bold", padding: 8 } : { padding: 8 };
-
-  return (
-    <TouchableWithoutFeedback onPress={onSelect} key={index}>
-      <Text style={style}>{option}</Text>
-    </TouchableWithoutFeedback>
-  );
-}
-
-function renderContainer(optionNodes) {
-  return <View>{optionNodes}</View>;
-}
-*/
 
 const questionBank = [
   "Have you kept a New Year’s resolution where you weren’t accountable to anyone—a resolution like drinking more water or keeping a journal?",

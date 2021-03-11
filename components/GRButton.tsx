@@ -5,33 +5,43 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import Colors from "../constants/Colors";
 
 export default function GRButton({
+  disabled = false,
   isIconButton = false,
   isPointingRight = true,
   title,
   onPress,
 }: {
+  disabled?: boolean;
   isIconButton?: boolean;
   isPointingRight?: boolean;
   title?: string;
   onPress: any; // TODO: typing
 }) {
   if (isIconButton) {
-    return <IconButton onPress={onPress} isPointingRight={isPointingRight} />;
+    return (
+      <IconButton
+        disabled={disabled}
+        onPress={onPress}
+        isPointingRight={isPointingRight}
+      />
+    );
   } else {
-    return <TextButton title={title} onPress={onPress} />;
+    return <TextButton disabled={disabled} title={title} onPress={onPress} />;
   }
 }
 
 function IconButton({
+  disabled,
   isPointingRight,
   onPress,
 }: {
+  disabled: boolean;
   isPointingRight: boolean;
   onPress: any; // todo
 }) {
   const buttonSize = 40; // TODO: for different screen sizes
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity disabled={disabled} onPress={onPress}>
       <View
         style={{
           width: buttonSize,
@@ -42,6 +52,7 @@ function IconButton({
           alignItems: "center",
           borderColor: Colors.buttonBackground,
           borderWidth: 0.5 * buttonSize,
+          opacity: disabled ? 0.7 : 1,
         }}
       >
         <Icon
@@ -55,17 +66,20 @@ function IconButton({
 }
 
 function TextButton({
+  disabled,
   title,
   onPress,
 }: {
+  disabled: boolean;
   title?: string;
   onPress: any; // TODO: typing
 }) {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity disabled={disabled} onPress={onPress}>
       <View
         style={{
           backgroundColor: Colors.buttonBackground,
+          opacity: disabled ? 0.7 : 1,
           alignItems: "center",
           justifyContent: "center",
           borderRadius: 4,
