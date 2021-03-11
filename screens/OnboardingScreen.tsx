@@ -15,15 +15,45 @@ export default function OnboardingScreen({ navigation }) {
   const numberOfQuestions = 7;
   const [quizStep, setQuizStep] = useState(-1);
   const [quizChoice, setQuizChoice] = useState(-1);
+  const [multipleChoiceAnswers, setMultipleChoiceAnswers] = useState(
+    Array(numberOfQuestions).fill(-1)
+  );
 
+  const saveMultipleChoiceAnswer = function ({
+    questionIndex,
+    choice,
+  }: {
+    questionIndex: number;
+    choice: number;
+  }) {
+    const newMultipleChoiceAnswers = multipleChoiceAnswers;
+    newMultipleChoiceAnswers[questionIndex] = choice;
+    setMultipleChoiceAnswers(newMultipleChoiceAnswers);
+  };
   const increaseQuizStep = function () {
+    switch (quizStep) {
+      case 0:
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+      case 6:
+        saveMultipleChoiceAnswer({
+          questionIndex: quizStep,
+          choice: quizChoice,
+        });
+      case 7:
+      // TODO: scaled question
+    }
+
     setQuizStep(quizStep + 1);
-    // TODO: save the question + choice
     setQuizChoice(-1);
   };
 
   const decreaseQuizStep = function () {
-    // TODO: select the previously saved question choice
+    // It's only ever possible to reach a multiple choice question from pressing Back
+    setQuizChoice(multipleChoiceAnswers[quizStep - 1]);
     setQuizStep(quizStep - 1);
   };
 

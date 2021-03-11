@@ -19,14 +19,15 @@ export default function MultipleChoiceQuestion({
 
       {answerBank[question].map((answer, i) => {
         return (
-          <TouchableOpacity onPress={() => onPress(i)}>
+          <TouchableOpacity key={i} onPress={() => onPress(i)}>
             <View key={i} style={styles.contentContainer}>
               <Text
                 key={i}
-                style={[
-                  styles.paragraph,
-                  selectedChoice === i ? { fontWeight: "bold" } : {},
-                ]}
+                style={
+                  selectedChoice === i
+                    ? styles.paragraphSelected
+                    : styles.paragraph
+                }
               >
                 {answer}
               </Text>

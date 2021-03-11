@@ -23,6 +23,11 @@ const styles = StyleSheet.create({
     color: Colors.primaryText,
     padding: 8,
   },
+  paragraphSelected: {
+    color: Colors.primaryText,
+    padding: 8,
+    fontWeight: "bold",
+  },
   separator: {
     marginVertical: 30,
     height: 1,
