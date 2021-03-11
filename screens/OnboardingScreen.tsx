@@ -16,8 +16,9 @@ export default function OnboardingScreen({ navigation }) {
   const [quizStep, setQuizStep] = useState(-1);
   const [quizChoice, setQuizChoice] = useState(-1);
   const [multipleChoiceAnswers, setMultipleChoiceAnswers] = useState(
-    Array(numberOfQuestions).fill(-1)
+    Array(numberOfQuestions - 1).fill(-1)
   );
+  const [scaledAnswers, setScaledAnswers] = useState(Array(6).fill(-1));
 
   const saveMultipleChoiceAnswer = function ({
     questionIndex,
@@ -30,6 +31,19 @@ export default function OnboardingScreen({ navigation }) {
     newMultipleChoiceAnswers[questionIndex] = choice;
     setMultipleChoiceAnswers(newMultipleChoiceAnswers);
   };
+
+  const saveScaledAnswer = function ({
+    questionIndex,
+    choice,
+  }: {
+    questionIndex: number;
+    choice: number;
+  }) {
+    const newScaledAnswers = [...scaledAnswers];
+    newScaledAnswers[questionIndex] = choice;
+    setScaledAnswers(newScaledAnswers);
+  };
+
   const increaseQuizStep = function () {
     switch (quizStep) {
       case 0:
@@ -43,6 +57,7 @@ export default function OnboardingScreen({ navigation }) {
           questionIndex: quizStep,
           choice: quizChoice,
         });
+        break;
       case 7:
       // TODO: scaled question
     }
@@ -55,6 +70,15 @@ export default function OnboardingScreen({ navigation }) {
     // It's only ever possible to reach a multiple choice question from pressing Back
     setQuizChoice(multipleChoiceAnswers[quizStep - 1]);
     setQuizStep(quizStep - 1);
+  };
+
+  const isNextButtonDisabled = function () {
+    // scaled questions
+    if (quizStep === 6) {
+      return scaledAnswers.includes(-1);
+    } else {
+      return quizChoice === -1;
+    }
   };
 
   const renderQuizContent = function () {
@@ -75,7 +99,13 @@ export default function OnboardingScreen({ navigation }) {
           />
         );
       case 6:
-        return <ScaledQuestion question={quizStep} />;
+        return (
+          <ScaledQuestion
+            scaledAnswers={scaledAnswers}
+            onPress={saveScaledAnswer}
+            question={quizStep}
+          />
+        );
       case 7:
         return <Results onProceed={() => navigation.navigate("Root")} />;
       default:
@@ -116,7 +146,7 @@ export default function OnboardingScreen({ navigation }) {
             <View style={{ padding: 16 }} />
             {quizStep >= 0 && (
               <GRButton
-                disabled={quizChoice === -1}
+                disabled={isNextButtonDisabled()}
                 isIconButton={true}
                 isPointingRight={true}
                 onPress={increaseQuizStep}

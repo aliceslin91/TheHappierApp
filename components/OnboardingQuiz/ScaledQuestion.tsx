@@ -1,10 +1,17 @@
-import React, { useState } from "react";
-import { Text, View } from "react-native";
+import React from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 
 import styles from "../../constants/BaseStyle";
 
-export default function ScaledQuestion({ question }: { question: number }) {
-  const [selectedOption, setSelectedOption] = useState("");
+export default function ScaledQuestion({
+  question,
+  onPress,
+  scaledAnswers,
+}: {
+  question: number;
+  onPress: any;
+  scaledAnswers: any; // TODO
+}) {
   return (
     <View style={styles.container}>
       <Text style={[styles.header, { fontSize: 12 }]}>{question + 1} of 7</Text>
@@ -19,15 +26,51 @@ export default function ScaledQuestion({ question }: { question: number }) {
                 paddingBottom: 16,
               }}
             >
-              <View style={styles.contentContainer}>
-                <Text style={styles.paragraph}>Tend to Disagree</Text>
-              </View>
-              <View style={styles.contentContainer}>
-                <Text style={styles.paragraph}>Neutral</Text>
-              </View>
-              <View style={styles.contentContainer}>
-                <Text style={styles.paragraph}>Tend to Agree</Text>
-              </View>
+              <TouchableOpacity
+                onPress={() => onPress({ questionIndex: i, choice: 0 })}
+              >
+                <View style={styles.contentContainer}>
+                  <Text
+                    style={
+                      scaledAnswers[i] === 0
+                        ? styles.paragraphSelected
+                        : styles.paragraph
+                    }
+                  >
+                    Tend to Disagree
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => onPress({ questionIndex: i, choice: 1 })}
+              >
+                <View style={styles.contentContainer}>
+                  <Text
+                    style={
+                      scaledAnswers[i] === 1
+                        ? styles.paragraphSelected
+                        : styles.paragraph
+                    }
+                  >
+                    Neutral
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => onPress({ questionIndex: i, choice: 2 })}
+              >
+                <View style={styles.contentContainer}>
+                  <Text
+                    style={
+                      scaledAnswers[i] === 2
+                        ? styles.paragraphSelected
+                        : styles.paragraph
+                    }
+                  >
+                    Tend to Agree
+                  </Text>
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
         );
