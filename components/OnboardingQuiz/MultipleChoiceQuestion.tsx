@@ -14,10 +14,10 @@ export default function MultipleChoiceQuestion({
 }) {
   return (
     <View style={styles.container}>
-      <Text style={[styles.header, { fontSize: 12 }]}>{question} of 7</Text>
-      <Text style={styles.header}>{questionBank[question - 1]}</Text>
+      <Text style={[styles.header, { fontSize: 12 }]}>{question + 1} of 7</Text>
+      <Text style={styles.header}>{questionBank[question]}</Text>
 
-      {answerBank[question - 1].map((answer, i) => {
+      {answerBank[question].map((answer, i) => {
         return (
           <TouchableOpacity onPress={() => onPress(i)}>
             <View key={i} style={styles.contentContainer}>

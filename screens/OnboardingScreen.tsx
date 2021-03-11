@@ -12,8 +12,8 @@ import Results from "../components/OnboardingQuiz/Results";
 import Navigation from "../navigation";
 
 export default function OnboardingScreen({ navigation }) {
-  const numberOfQuestions = 8;
-  const [quizStep, setQuizStep] = useState(0);
+  const numberOfQuestions = 7;
+  const [quizStep, setQuizStep] = useState(-1);
   const [quizChoice, setQuizChoice] = useState(-1);
 
   const increaseQuizStep = function () {
@@ -23,19 +23,20 @@ export default function OnboardingScreen({ navigation }) {
   };
 
   const decreaseQuizStep = function () {
+    // TODO: select the previously saved question choice
     setQuizStep(quizStep - 1);
   };
 
   const renderQuizContent = function () {
     switch (quizStep) {
-      case 0:
+      case -1:
         return <InstructionComponent onProceed={increaseQuizStep} />;
+      case 0:
       case 1:
       case 2:
       case 3:
       case 4:
       case 5:
-      case 6:
         return (
           <MultipleChoiceQuestion
             onPress={setQuizChoice}
@@ -43,9 +44,9 @@ export default function OnboardingScreen({ navigation }) {
             selectedChoice={quizChoice}
           />
         );
-      case 7:
+      case 6:
         return <ScaledQuestion question={quizStep} />;
-      case 8:
+      case 7:
         return <Results onProceed={() => navigation.navigate("Root")} />;
       default:
         return (
@@ -59,7 +60,7 @@ export default function OnboardingScreen({ navigation }) {
       <ScrollView>{renderQuizContent()}</ScrollView>
 
       {/* question nav */}
-      {quizStep > 0 && quizStep < numberOfQuestions && (
+      {quizStep >= 0 && quizStep < numberOfQuestions && (
         <View
           style={{
             flexDirection: "row",
@@ -69,13 +70,13 @@ export default function OnboardingScreen({ navigation }) {
           }}
         >
           <Dots
-            length={numberOfQuestions - 1}
-            active={quizStep - 1}
+            length={numberOfQuestions}
+            active={quizStep}
             passiveColor="#AADDEF" // TODO: hardcoded
             activeColor="#005781"
           />
           <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-            {quizStep > 1 && (
+            {quizStep > 0 && (
               <GRButton
                 isIconButton={true}
                 isPointingRight={false}
@@ -83,7 +84,7 @@ export default function OnboardingScreen({ navigation }) {
               />
             )}
             <View style={{ padding: 16 }} />
-            {quizStep > 0 && (
+            {quizStep >= 0 && (
               <GRButton
                 disabled={quizChoice === -1}
                 isIconButton={true}

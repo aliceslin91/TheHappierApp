@@ -7,7 +7,7 @@ export default function ScaledQuestion({ question }: { question: number }) {
   const [selectedOption, setSelectedOption] = useState("");
   return (
     <View style={styles.container}>
-      <Text style={[styles.header, { fontSize: 12 }]}>{question} of 7</Text>
+      <Text style={[styles.header, { fontSize: 12 }]}>{question + 1} of 7</Text>
       {questionBank.map((q, i) => {
         return (
           <View key={i}>
