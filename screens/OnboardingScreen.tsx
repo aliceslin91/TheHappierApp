@@ -52,14 +52,14 @@ export default function OnboardingScreen({ navigation }) {
       case 3:
       case 4:
       case 5:
-      case 6:
         saveMultipleChoiceAnswer({
           questionIndex: quizStep,
           choice: quizChoice,
         });
         break;
-      case 7:
-      // TODO: scaled question
+      case 6:
+        scoreAnswers();
+        break;
     }
 
     setQuizStep(quizStep + 1);
