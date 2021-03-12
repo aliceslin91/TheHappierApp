@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     padding: 8,
-    // fontFamily: "Gill Sans",
+    fontFamily: "Gill Sans",
   },
   contentContainer: {
     backgroundColor: Colors.secondaryBackground,
@@ -23,13 +23,13 @@ const styles = StyleSheet.create({
   paragraph: {
     color: Colors.primaryText,
     padding: 8,
-    // fontFamily: "Gill Sans",
+    fontFamily: "Gill Sans",
   },
   paragraphSelected: {
     color: Colors.primaryText,
     padding: 8,
     fontWeight: "bold",
-    // fontFamily: "Gill Sans",
+    fontFamily: "Gill Sans",
   },
   separator: {
     marginVertical: 30,

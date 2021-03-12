@@ -10,7 +10,7 @@ export default function SettingsScreen({ navigation }) {
     <View style={[styles.container, styles.centered]}>
       <Text style={styles.header}>Settings</Text>
       <View style={styles.separator} />
-      <Text>Another placeholder screen</Text>
+      <Text style={styles.paragraph}>Another placeholder screen</Text>
       <GRButton
         isIconButton={false}
         title="Retake onboarding quiz"
