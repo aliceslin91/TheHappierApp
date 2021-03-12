@@ -52,7 +52,7 @@ function IconButton({
           alignItems: "center",
           borderColor: Colors.buttonBackground,
           borderWidth: 0.5 * buttonSize,
-          opacity: disabled ? 0.7 : 1,
+          opacity: disabled ? 0.3 : 1,
         }}
       >
         <Icon
@@ -79,7 +79,7 @@ function TextButton({
       <View
         style={{
           backgroundColor: Colors.buttonBackground,
-          opacity: disabled ? 0.7 : 1,
+          opacity: disabled ? 0.3 : 1,
           alignItems: "center",
           justifyContent: "center",
           borderRadius: 4,
