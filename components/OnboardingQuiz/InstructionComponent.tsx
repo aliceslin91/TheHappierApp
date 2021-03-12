@@ -2,7 +2,6 @@ import React from "react";
 import { Text, View } from "react-native";
 
 import styles from "../../constants/BaseStyle";
-
 import GRButton from "../../components/GRButton";
 
 export default function InstructionComponent({

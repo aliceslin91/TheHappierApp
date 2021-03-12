@@ -8,15 +8,6 @@ const deepBlue = "#005781";
 const yellow = "#FFDB00";
 const gray = "#4F4F4F";
 
-/*
-const primaryText = gray;
-const primaryBackground = lightBlue;
-const secondaryText = deepBlue;
-const headerText = deepBlue;
-const secondaryBackground = mediumBlue;
-const buttonBackground = yellow;
-*/
-
 export default {
   accentBackground: deepBlue,
   primaryText: gray,

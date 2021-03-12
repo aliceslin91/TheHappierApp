@@ -2,7 +2,6 @@ import React from "react";
 import { Text, View } from "react-native";
 
 import styles from "../../constants/BaseStyle";
-
 import GRButton from "../../components/GRButton";
 
 export default function Results({
@@ -16,8 +15,8 @@ export default function Results({
     <View
       style={[
         styles.container,
+        styles.centered,
         {
-          justifyContent: "center",
           paddingHorizontal: 24,
           paddingVertical: 36,
         },
