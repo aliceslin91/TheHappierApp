@@ -56,12 +56,8 @@ const HomeStack = createStackNavigator<HomeParamList>();
 
 function HomeNavigator() {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={{ headerTitle: "Home" }}
-      />
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+      <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
     </HomeStack.Navigator>
   );
 }
@@ -70,12 +66,8 @@ const SettingsStack = createStackNavigator<SettingsParamList>();
 
 function SettingsNavigator() {
   return (
-    <SettingsStack.Navigator>
-      <SettingsStack.Screen
-        name="SettingsScreen"
-        component={SettingsScreen}
-        options={{ headerTitle: "Settings" }}
-      />
+    <SettingsStack.Navigator screenOptions={{ headerShown: false }}>
+      <SettingsStack.Screen name="SettingsScreen" component={SettingsScreen} />
     </SettingsStack.Navigator>
   );
 }
