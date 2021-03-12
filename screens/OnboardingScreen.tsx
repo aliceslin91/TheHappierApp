@@ -19,6 +19,126 @@ export default function OnboardingScreen({ navigation }) {
     Array(numberOfQuestions - 1).fill(-1)
   );
   const [scaledAnswers, setScaledAnswers] = useState(Array(6).fill(-1));
+  const [tendency, setTendency] = useState("none");
+
+  const scoreAnswers = function () {
+    const tendencies = { upholder: 0, questioner: 0, obliger: 0, rebel: 0 };
+    multipleChoiceAnswers.forEach((answer, i) => {
+      switch (i) {
+        case 0:
+          if (answer === 0) {
+            tendencies.upholder++;
+          } else if (answer === 1) {
+            tendencies.questioner++;
+          } else if (answer === 2) {
+            tendencies.obliger++;
+          } else if (answer === 3) {
+            tendencies.rebel++;
+          }
+          break;
+        case 1:
+          if (answer === 0) {
+            tendencies.questioner++;
+          } else if (answer === 1) {
+            tendencies.obliger++;
+          } else if (answer === 2) {
+            tendencies.rebel++;
+          } else if (answer === 3) {
+            tendencies.upholder++;
+          }
+          break;
+        case 2:
+          if (answer === 0) {
+            tendencies.questioner++;
+          } else if (answer === 1) {
+            tendencies.rebel++;
+          } else if (answer === 2) {
+            tendencies.obliger++;
+          } else if (answer === 3) {
+            tendencies.upholder++;
+          }
+          break;
+        case 3:
+        case 4:
+          if (answer === 0) {
+            tendencies.upholder++;
+          } else if (answer === 1) {
+            tendencies.questioner++;
+          } else if (answer === 2) {
+            tendencies.obliger++;
+          } else if (answer === 3) {
+            tendencies.rebel++;
+          }
+          break;
+        case 5:
+          if (answer === 0) {
+            tendencies.obliger++;
+          } else if (answer === 1) {
+            tendencies.upholder++;
+          } else if (answer === 2) {
+            tendencies.rebel++;
+          } else if (answer === 3) {
+            tendencies.questioner++;
+          }
+          break;
+      }
+    });
+
+    scaledAnswers.forEach((answer, i) => {
+      if (answer === 1) {
+        switch (i) {
+          case 0:
+            tendencies.rebel++;
+            break;
+          case 1:
+            tendencies.questioner++;
+            break;
+          case 2:
+            tendencies.obliger++;
+            break;
+          case 3:
+            tendencies.rebel++;
+            break;
+          case 4:
+            tendencies.obliger++;
+            break;
+          case 5:
+            tendencies.rebel++;
+            break;
+        }
+      }
+    });
+
+    const finalTendency = Object.keys(tendencies).reduce(
+      (a, b) => (tendencies[a] > tendencies[b] ? a : b) // TODO: typing
+    );
+    setTendency(finalTendency);
+
+    /*
+    [DEBUG] scoring:
+    console.log(tendencies);
+    console.log(finalTendency);
+    */
+
+    /*
+    ANSWER KEY
+      0 - upholder questioner obliger rebel
+      1 - q o r u
+      2 - q r o u
+      3 - u q o r
+      4 - u q o r
+      5 - o u r q
+
+      scaled - tend to agree
+      7 0 -  rebel
+      8 1 -  q
+      9 2 -  o
+      10 3 - r
+      11 4 - o
+      12 5 - r
+      13 - q // not in the online quiz
+    */
+  };
 
   const saveMultipleChoiceAnswer = function ({
     questionIndex,
@@ -107,7 +227,12 @@ export default function OnboardingScreen({ navigation }) {
           />
         );
       case 7:
-        return <Results onProceed={() => navigation.navigate("Root")} />;
+        return (
+          <Results
+            tendency={tendency}
+            onProceed={() => navigation.navigate("Root")}
+          />
+        );
       default:
         return (
           <Text style={{ flex: 1 }}>Default here - should be unreachable</Text>
