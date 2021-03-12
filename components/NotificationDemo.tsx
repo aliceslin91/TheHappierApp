@@ -2,11 +2,7 @@ import Constants from "expo-constants";
 import * as Notifications from "expo-notifications";
 
 import React, { useState, useEffect, useRef } from "react";
-import { StyleSheet, Button, Platform } from "react-native";
-
-import Colors from "../constants/Colors";
-import { MonoText } from "./StyledText";
-import { Text, View } from "./Themed";
+import { Text, StyleSheet, Button, Platform, View } from "react-native";
 
 export default function NotificationDemo() {
   const [expoPushToken, setExpoPushToken] = useState("");

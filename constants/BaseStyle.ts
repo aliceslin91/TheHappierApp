@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     padding: 8,
-    fontFamily: "Gill Sans",
+    // fontFamily: "Gill Sans",
   },
   contentContainer: {
     backgroundColor: Colors.secondaryBackground,
