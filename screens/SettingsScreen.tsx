@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
 
-import NotificationDemo from "../components/NotificationDemo";
+// import NotificationDemo from "../components/NotificationDemo";
 import { Text, View } from "../components/Themed";
 
 export default function SettingsScreen() {
@@ -13,7 +13,8 @@ export default function SettingsScreen() {
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <NotificationDemo />
+      <Text>Another placeholder screen</Text>
+      {/* <NotificationDemo /> */}
     </View>
   );
 }
