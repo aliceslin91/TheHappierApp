@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../constants/Colors";
 
@@ -55,8 +55,8 @@ function IconButton({
           opacity: disabled ? 0.3 : 1,
         }}
       >
-        <Icon
-          name={isPointingRight ? "chevron-right" : "chevron-left"}
+        <Ionicons
+          name={isPointingRight ? "chevron-forward" : "chevron-back"}
           size={buttonSize - 10}
           color={Colors.buttonForeground}
         />
