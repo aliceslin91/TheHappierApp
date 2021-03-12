@@ -1,5 +1,4 @@
 import * as React from "react";
-import { StyleSheet } from "react-native";
 
 // import NotificationDemo from "../components/NotificationDemo";
 import GRButton from "../components/GRButton";

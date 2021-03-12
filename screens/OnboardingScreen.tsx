@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import Dots from "react-native-dots-pagination";
 
 import styles from "../constants/BaseStyle";
@@ -9,7 +9,6 @@ import InstructionComponent from "../components/OnboardingQuiz/InstructionCompon
 import MultipleChoiceQuestion from "../components/OnboardingQuiz/MultipleChoiceQuestion";
 import ScaledQuestion from "../components/OnboardingQuiz/ScaledQuestion";
 import Results from "../components/OnboardingQuiz/Results";
-import Navigation from "../navigation";
 
 export default function OnboardingScreen({ navigation }) {
   const numberOfQuestions = 7;
