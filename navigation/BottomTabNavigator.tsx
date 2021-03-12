@@ -17,7 +17,13 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
+      tabBarOptions={{
+        activeTintColor: Colors[colorScheme].tabIconSelected,
+        inactiveTintColor: Colors[colorScheme].tabIconDefault,
+        style: {
+          backgroundColor: Colors.accentBackground,
+        },
+      }}
     >
       <BottomTab.Screen
         name="Home"

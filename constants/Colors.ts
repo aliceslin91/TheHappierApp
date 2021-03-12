@@ -18,6 +18,7 @@ const buttonBackground = yellow;
 */
 
 export default {
+  accentBackground: deepBlue,
   primaryText: gray,
   primaryBackground: lightLightBlue,
   secondaryText: deepBlue,
@@ -31,9 +32,10 @@ export default {
     text: gray,
     background: lightBlue,
     tint: tintColorLight,
-    tabIconDefault: mediumBlue,
-    tabIconSelected: deepBlue,
+    tabIconDefault: lightBlue,
+    tabIconSelected: lightLightBlue,
   },
+  // TODO: fill these out if there is a dark theme
   dark: {
     text: "#fff",
     background: "#000",
