@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { TouchableOpacity, ScrollView, Text, View } from "react-native";
 import Dots from "react-native-dots-pagination";
+import { Ionicons } from "@expo/vector-icons";
 
 import styles from "../constants/BaseStyle";
+import Colors from "../constants/Colors";
 
 import GRButton from "../components/GRButton";
 import InstructionComponent from "../components/OnboardingQuiz/InstructionComponent";
@@ -200,6 +202,12 @@ export default function OnboardingScreen({ navigation }) {
     }
   };
 
+  const finishOnboardingQuiz = function () {
+    setQuizStep(-1);
+    setQuizChoice(-1);
+    navigation.navigate("Root");
+  };
+
   const renderQuizContent = function () {
     switch (quizStep) {
       case -1:
@@ -226,12 +234,7 @@ export default function OnboardingScreen({ navigation }) {
           />
         );
       case 7:
-        return (
-          <Results
-            tendency={tendency}
-            onProceed={() => navigation.navigate("Root")}
-          />
-        );
+        return <Results tendency={tendency} onProceed={finishOnboardingQuiz} />;
       default:
         return (
           <Text style={{ flex: 1 }}>Default here - should be unreachable</Text>
@@ -241,6 +244,17 @@ export default function OnboardingScreen({ navigation }) {
 
   return (
     <View style={[styles.container, { padding: 16 }]}>
+      <View
+        style={{ flexDirection: "col", alignItems: "flex-end", padding: 8 }}
+      >
+        <TouchableOpacity onPress={finishOnboardingQuiz}>
+          <Ionicons
+            size={30}
+            name="md-close-outline"
+            color={Colors.buttonForeground}
+          />
+        </TouchableOpacity>
+      </View>
       <ScrollView>{renderQuizContent()}</ScrollView>
 
       {/* question nav */}
