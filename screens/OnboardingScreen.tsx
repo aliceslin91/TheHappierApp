@@ -245,7 +245,7 @@ export default function OnboardingScreen({ navigation }) {
   return (
     <View style={[styles.container, { padding: 16 }]}>
       <View
-        style={{ flexDirection: "col", alignItems: "flex-end", padding: 8 }}
+        style={{ flexDirection: "column", alignItems: "flex-end", padding: 8 }}
       >
         <TouchableOpacity onPress={finishOnboardingQuiz}>
           <Ionicons
