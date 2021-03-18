@@ -18,7 +18,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "com.gretchenrubinexperience.thehappierapp",
-      "buildNumber": "1.0.5",
+      "buildNumber": "1.0.7",
       "supportsTablet": true
     },
     "android": {
