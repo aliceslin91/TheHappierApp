@@ -57,6 +57,15 @@ function TabBarIcon(props: {
   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
+const grHeaderOptions = {
+  headerStyle: {
+    backgroundColor: Colors.accentBackground,
+    height: 80, // TODO: check this per platform
+  },
+  headerTitle: () => <GRHeader />,
+  headerLeft: null, // TODO: typing
+};
+
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 const HomeStack = createStackNavigator<HomeParamList>();
@@ -67,14 +76,7 @@ function HomeNavigator() {
       <HomeStack.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{
-          headerStyle: {
-            backgroundColor: Colors.accentBackground,
-            height: 80, // TODO: check this per platform
-          },
-          headerTitle: (props) => <GRHeader />,
-          headerLeft: null, // TODO: typing
-        }}
+        options={grHeaderOptions} // TODO: typing?
       />
     </HomeStack.Navigator>
   );
@@ -84,8 +86,12 @@ const SettingsStack = createStackNavigator<SettingsParamList>();
 
 function SettingsNavigator() {
   return (
-    <SettingsStack.Navigator screenOptions={{ headerShown: false }}>
-      <SettingsStack.Screen name="SettingsScreen" component={SettingsScreen} />
+    <SettingsStack.Navigator>
+      <SettingsStack.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
+        options={grHeaderOptions} // TODO: typing?
+      />
     </SettingsStack.Navigator>
   );
 }
