@@ -41,27 +41,16 @@ function IconButton({
 }) {
   const buttonSize = 40; // TODO: for different screen sizes
   return (
-    <TouchableOpacity disabled={disabled} onPress={onPress}>
-      <View
-        style={{
-          width: buttonSize,
-          height: buttonSize,
-          borderRadius: 0.5 * buttonSize,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          borderColor: Colors.buttonBackground,
-          borderWidth: 0.5 * buttonSize,
-          opacity: disabled ? 0.3 : 1,
-        }}
-      >
-        <Ionicons
-          name={isPointingRight ? "chevron-forward" : "chevron-back"}
-          size={buttonSize - 10}
-          color={Colors.buttonForeground}
-        />
-      </View>
-    </TouchableOpacity>
+    <Ionicons.Button
+      name={isPointingRight ? "chevron-forward" : "chevron-back"}
+      size={buttonSize - 10}
+      color={Colors.buttonForeground}
+      backgroundColor={Colors.buttonBackground}
+      borderRadius={buttonSize}
+      iconStyle={{ marginRight: 0, opacity: disabled ? 0.3 : 1 }}
+      onPress={onPress}
+      disabled={disabled}
+    />
   );
 }
 
