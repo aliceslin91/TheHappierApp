@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
+import GRHeader from "../components/GRHeader";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import HomeScreen from "../screens/HomeScreen";
@@ -62,8 +63,19 @@ const HomeStack = createStackNavigator<HomeParamList>();
 
 function HomeNavigator() {
   return (
-    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-      <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: Colors.accentBackground,
+            height: 80, // TODO: check this per platform
+          },
+          headerTitle: (props) => <GRHeader />,
+          headerLeft: null, // TODO: typing
+        }}
+      />
     </HomeStack.Navigator>
   );
 }

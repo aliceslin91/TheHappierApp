@@ -10,6 +10,7 @@ const gray = "#4F4F4F";
 
 export default {
   accentBackground: deepBlue,
+  accentText: lightLightBlue,
   primaryText: gray,
   primaryBackground: lightLightBlue,
   secondaryText: deepBlue,
@@ -18,6 +19,7 @@ export default {
   buttonBackground: yellow,
   buttonForeground: deepBlue,
   buttonText: deepBlue,
+  iconDefault: lightLightBlue,
 
   light: {
     text: gray,
