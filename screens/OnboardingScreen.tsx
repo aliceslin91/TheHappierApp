@@ -270,8 +270,8 @@ export default function OnboardingScreen({ navigation }) {
           <Dots
             length={numberOfQuestions}
             active={quizStep}
-            passiveColor="#AADDEF" // TODO: hardcoded
-            activeColor="#005781"
+            passiveColor={Colors.raw.lightBlue}
+            activeColor={Colors.raw.deepBlue}
           />
           <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
             {quizStep > 0 && (

@@ -9,6 +9,15 @@ const yellow = "#FFDB00";
 const gray = "#4F4F4F";
 
 export default {
+  raw: {
+    lightLightBlue: "#F2FCFF",
+    lightBlue: "#AADDEF",
+    mediumBlue: "#7EC1D8",
+    deepBlue: "#005781",
+    yellow: "#FFDB00",
+    gray: "#4F4F4F",
+  },
+
   accentBackground: deepBlue,
   accentText: lightLightBlue,
   primaryText: gray,
